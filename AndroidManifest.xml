@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xql.newsccav"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name="com.ccavnews.model.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ccavnews.activity.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ccavnews.activity.TitleActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.ccavnews.activity.ContentActivity"
+            android:label="@string/title_name" >
+        </activity>
+
+        <service
+            android:name="com.ccavnews.service.LoadNewsService"
+            android:enabled="true" >
+        </service>
+        <service
+            android:name="com.ccavnews.service.DailyRefreshService"
+            android:enabled="true" >
+        </service>
+
+        <!--
+        <receiver android:name="BootBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+        -->
+        <receiver
+            android:name="com.ccavnews.model.AlarmReceiver"
+            android:enabled="true" >
+        </receiver>
+        <receiver
+            android:name="com.ccavnews.receiver.MsgReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.REFLASH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
